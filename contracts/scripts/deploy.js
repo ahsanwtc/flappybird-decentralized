@@ -19,6 +19,8 @@ async function main() {
   console.log(`Flappy address: ${flappy.address}`);
   Config.setConfig(`${network}.Flappy`, flappy.address);
 
+  await Config.updateConfig();
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere

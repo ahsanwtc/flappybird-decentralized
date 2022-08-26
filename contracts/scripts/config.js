@@ -1,16 +1,26 @@
 const fs = require('fs');
 let config;
 
-export async function initConfig() {
+module.exports.initConfig = async () => {
   console.log('init');
-  config = JSON.parse((await fs.readFile('../config.json')).toString());
+  config = JSON.parse((await readFile('./config.json')).toString());
   return config;
 };
 
-export const getConfig = ()  => config;
+const readFile = async file => new Promise(async (resolve, reject) => {
+  fs.readFile(file, { encoding: 'utf-8' }, (error, data) => {
+    if (error) {
+      return reject(error);
+    }
 
-export const setConfig = (path, value) => {
-  console.log(config);
+    return resolve(data);
+  });
+});
+
+module.exports.getConfig = ()  => config;
+
+module.exports.setConfig = (path, value) => {
+  console.log('setConfig', config);
   const splitPath = path.split('.').reverse();
   let ref = config;
 
@@ -31,7 +41,13 @@ export const setConfig = (path, value) => {
   }
 };
 
-export const updateConfig = async () => {
+module.exports.updateConfig = async () => {
   console.log("write: ", JSON.stringify(config));
-  return fs.writeFile('../config.json', JSON.stringify(config, null, 2));
+  fs.writeFile('./config.json', JSON.stringify(config, null, 2), error => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log("File written successfully\n");
+  });
 }
