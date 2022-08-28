@@ -1,7 +1,8 @@
 {
   "dev": {},
   "bsctest": {
-    "Flappy": "0x029667A5C3FCBAD2F871431e4026113Daf086369"
+    "Flappy": "0x6D278B6C645485D1dabC4fb47e8EF956Af5774d4",
+    "Vault": "0x64E2CdA60AeaE80c12EF6E887f1323cFC6253836"
   },
   "main": {}
 }

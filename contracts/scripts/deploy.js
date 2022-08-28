@@ -19,6 +19,11 @@ async function main() {
   console.log(`Flappy address: ${flappy.address}`);
   Config.setConfig(`${network}.Flappy`, flappy.address);
 
+  const Vault = await ethers.getContractFactory('Vault');
+  const vault = await Vault.deploy();
+  console.log(`Vault address: ${vault.address}`);
+  Config.setConfig(`${network}.Vault`, vault.address);
+
   await Config.updateConfig();
 
 }
