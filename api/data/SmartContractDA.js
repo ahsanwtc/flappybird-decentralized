@@ -4,7 +4,7 @@ const Web3 = require('web3');
 const flappyabi = require('../contracts/flappy.json');
 const vaultabi = require('../contracts/vault.json');
 
-class SmartContractDO {
+class SmartContractDA {
   constructor(){
     this.web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545/');
     this.token_address = process.env.TOKEN_ADDRESS;
@@ -39,4 +39,4 @@ class SmartContractDO {
 
 };
 
-module.exports = SmartContractDO;
+module.exports = SmartContractDA;
